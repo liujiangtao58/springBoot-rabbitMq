@@ -28,13 +28,13 @@ public class Producer implements RabbitTemplate.ReturnCallback {
         System.out.println("HelloSender 消息发送成功 ");
       }
     });
-    rabbitTemplate.setMandatory(true);
+  /*  rabbitTemplate.setMandatory(true);
 
     // 消息返回, yml需要配置 publisher-returns: true
     rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
       String correlationId = message.getMessageProperties().getCorrelationId();
       log.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}", correlationId, replyCode, replyText, exchange, routingKey);
-    });
+    });*/
     rabbitTemplate.convertAndSend(
         RabbitConfig.TEST_EXCHANGE, RabbitConfig.TEST_QUEUE, "45678998767909878987");
   }
